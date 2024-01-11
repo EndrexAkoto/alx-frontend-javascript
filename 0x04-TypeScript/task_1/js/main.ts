@@ -1,42 +1,40 @@
+
+// Task 1 - Teacher Interface
+
 interface Teacher {
-  firstName: string;
-  lastName: string;
+  readonly firstName: string;
+  readonly lastName: string;
   fullTimeEmployee: boolean;
   yearsOfExperience?: number;
-  location: string;
+  readonly location: string;
   [key: string]: any;
 }
 
-function createTeacher({
-  firstName,
-  lastName,
-  fullTimeEmployee,
-  yearsOfExperience,
-  location,
-  ...additionalAttributes
-}: Teacher): Teacher {
-  const teacher: Teacher = {
-    firstName,
-    lastName,
-    fullTimeEmployee,
-    location,
-    ...additionalAttributes,
-  };
-
-  if (yearsOfExperience !== undefined) {
-    teacher.yearsOfExperience = yearsOfExperience;
-  }
-
-  return teacher;
-}
-
-const teacher3: Teacher = createTeacher({
+const teacher3: Teacher = {
   firstName: 'John',
   fullTimeEmployee: false,
   lastName: 'Doe',
   location: 'London',
   contract: false,
-});
+};
 
+console.log("Task 1 - Teacher Interface:");
 console.log(teacher3);
+
+// Task 2 - Extending the Teacher Class
+
+interface Directors extends Teacher {
+  numberOfReports: number;
+}
+
+const director1: Directors = {
+  firstName: 'John',
+  fullTimeEmployee: true,
+  lastName: 'Doe',
+  location: 'London',
+  numberOfReports: 17,
+};
+
+console.log("\nTask 2 - Extending the Teacher Class:");
+console.log(director1);
 
